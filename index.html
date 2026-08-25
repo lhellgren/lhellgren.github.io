@@ -3,28 +3,29 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Leif Hellgren · Software Engineer</title>
-<meta name="description" content="Physics-trained engineer. Owned a flight-critical subsystem end to end on Blue Origin's first lunar lander, then built Python and LLM systems solo. Moving to NYC, September 2026." />
+<title>Leif Hellgren · Forward Deployed Manufacturing Engineer</title>
+<meta name="description" content="Physics-trained engineer. Owned a flight-critical subsystem end to end on Blue Origin's first lunar lander. Now a forward deployed manufacturing engineer at Dirac." />
 <meta name="author" content="Leif Hellgren" />
-<meta property="og:title" content="Leif Hellgren · Software Engineer" />
-<meta property="og:description" content="Physics at UCSB and founded its first rocket club. Flight-critical subsystem on Blue Origin's first lunar lander. Python and LLM systems built solo. Moving to NYC, September 2026." />
+<meta property="og:title" content="Leif Hellgren · Forward Deployed Manufacturing Engineer" />
+<meta property="og:description" content="Physics at UCSB and founded its first rocket club. Flight-critical subsystem on Blue Origin's first lunar lander. Now a forward deployed manufacturing engineer at Dirac." />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Leif Hellgren" />
 <meta property="og:locale" content="en_US" />
 <!-- Without an og:image every share of this link (LinkedIn, Slack, iMessage) renders as a
-     blank card. Generated from the site's own type and palette by tools/make-og.py. -->
-<meta property="og:image" content="https://leif-hellgren1.github.io/og-card.png" />
+     blank card. Generated from the site's own type and palette by tools/make-og.py; re-run
+     that script (not a text edit) whenever the headline or positioning changes. -->
+<meta property="og:image" content="https://lhellgren.github.io/og-card.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Leif Hellgren, software engineer. Physics, rockets, AI, GTM." />
+<meta property="og:image:alt" content="Leif Hellgren, software engineer. Physics, rockets, AI." />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Leif Hellgren · Software Engineer" />
-<meta name="twitter:description" content="Flight-critical subsystem on Blue Origin's first lunar lander. Python and LLM systems built solo. Moving to NYC, September 2026." />
-<meta name="twitter:image" content="https://leif-hellgren1.github.io/og-card.png" />
+<meta name="twitter:title" content="Leif Hellgren · Forward Deployed Manufacturing Engineer" />
+<meta name="twitter:description" content="Flight-critical subsystem on Blue Origin's first lunar lander. Now a forward deployed manufacturing engineer at Dirac." />
+<meta name="twitter:image" content="https://lhellgren.github.io/og-card.png" />
 <!-- Canonical points at the address the site actually serves from. When leif.exelor.com is
      pointed at Pages (see DEPLOY.md), change both of these back to https://leif.exelor.com/ -->
-<meta property="og:url" content="https://leif-hellgren1.github.io/" />
-<link rel="canonical" href="https://leif-hellgren1.github.io/" />
+<meta property="og:url" content="https://lhellgren.github.io/" />
+<link rel="canonical" href="https://lhellgren.github.io/" />
 <!-- literal --bg: HTML meta attributes cannot reference CSS custom properties -->
 <meta name="theme-color" content="#0a0b0f" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪐</text></svg>" />
@@ -44,14 +45,14 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Leif Hellgren",
-  "url": "https://leif-hellgren1.github.io/",
+  "url": "https://lhellgren.github.io/",
   "email": "mailto:leif@exelor.com",
-  "jobTitle": "Software Engineer",
-  "description": "Physics-trained engineer. Owned a flight-critical cryogenic subsystem end to end on Blue Origin's first lunar lander, then built Python and LLM systems independently.",
+  "jobTitle": "Forward Deployed Manufacturing Engineer",
+  "description": "Physics-trained engineer. Owned a flight-critical cryogenic subsystem end to end on Blue Origin's first lunar lander. Now a forward deployed manufacturing engineer at Dirac.",
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of California, Santa Barbara" },
   "knowsAbout": ["Python", "TypeScript", "Next.js", "LLM systems", "Systems engineering", "Fluid and thermal analysis", "Go-to-market engineering"],
   "sameAs": [
-    "https://github.com/leif-hellgren1",
+    "https://github.com/lhellgren",
     "https://www.linkedin.com/in/leif-hellgren-a1177216a/"
   ]
 }
@@ -344,11 +345,13 @@
   }
   .hero-glass h1 {
     font-family:"Cabinet Grotesk","IBM Plex Sans",sans-serif; font-weight:800;
-    /* sized so the longer line ("Physics. Rockets.") fits the column without wrapping at
-       every width; .hline below forbids wrapping, so this has to fit outright */
-    font-size:clamp(1.5rem,9.5vw,3.9rem); line-height:1.06; letter-spacing:-0.02em;
+    /* Sized so "Physics. Rockets. AI." fits the column without wrapping at every width.
+       .hline below forbids wrapping, so this has to fit outright, no fallback line break.
+       Max measured (headless, at the card's hard max-width of 490px content): true fit
+       ceiling is 3.57rem; capped at 3.4rem for safety margin across font renderers. */
+    font-size:clamp(1.5rem,9.5vw,3.4rem); line-height:1.06; letter-spacing:-0.02em;
   }
-  /* one line when it fits; the only permitted break is between these two halves */
+  /* the whole headline is one unbreakable line; no other break point is permitted */
   .hero-glass h1 .hline { white-space:nowrap; }
   /* one claim per line, so the four read as a scannable list rather than a paragraph */
   .hero-glass .tagline { margin-top:var(--space-5); max-width:48ch; font-size:clamp(0.98rem,2vw,1.15rem); color:var(--ink-dim); display:grid; gap:var(--space-3); }
@@ -606,7 +609,8 @@
      its top/bottom air back. Nothing here touches a >=901px-tall desktop or a phone. */
   @media (min-width:641px) and (max-height:900px) {
     .hero-glass { padding:34px clamp(30px,5.5vw,64px); }
-    .hero-glass h1 { font-size:clamp(2.1rem,4.6vw,3.1rem); }
+    /* same 490px card ceiling as the base rule; capped proportionally lower, same margin */
+    .hero-glass h1 { font-size:clamp(2.1rem,4.6vw,2.7rem); }
     .hero-glass .tagline { margin-top:16px; gap:9px; }
     .status-line { margin-top:12px; }
     .hero-actions { margin-top:20px; }
@@ -655,7 +659,7 @@
     <button type="button" data-email="leif@exelor.com" title="Copy leif@exelor.com" aria-label="Copy email address leif@exelor.com">Email</button>
     <a href="https://www.linkedin.com/in/leif-hellgren-a1177216a/" target="_blank" rel="noopener">LinkedIn &nearr;</a>
     <a class="ql-resume" href="Leif-Hellgren-Resume.pdf" download>Resume &darr;</a>
-    <a href="https://github.com/leif-hellgren1" target="_blank" rel="noopener">GitHub &nearr;</a>
+    <a href="https://github.com/lhellgren" target="_blank" rel="noopener">GitHub &nearr;</a>
   </div>
 
   <div id="viewport">
@@ -670,16 +674,10 @@
       <!-- STOP 0 · HERO -->
       <div class="stop hero-stop" data-loc="top">
         <div class="hero-glass glass" id="heroGlass">
-          <h1><span class="hline">Physics. Rockets.</span> <span class="hline">AI. GTM.</span></h1>
+          <h1><span class="hline">Physics. Rockets. AI.</span></h1>
           <div class="tagline">
-            <p>Studied physics at UCSB and founded its first rocket club.</p>
-            <p>Delivered a flight-critical subsystem on a first-generation lunar lander at Blue Origin.</p>
-            <p>Built custom stock market analysis software.</p>
-            <p>Shipped production features and built the outbound system at an early-stage startup.</p>
-          </div>
-          <p class="status-line"><span class="pulse-dot" aria-hidden="true"></span>Looking for my next role in NYC.</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#/now">Hiring?</a>
+            <p>Physics-trained engineer who has built flight hardware, software, and go-to-market systems from the ground up.</p>
+            <p>Now a forward deployed manufacturing engineer at Dirac, helping manufacturers get AI-driven production planning running on their factory floor.</p>
           </div>
         </div>
         <!-- outside the card: it belongs to the page, and keeping it out of the card's flow
@@ -690,17 +688,11 @@
       <!-- STOP 1 · NOW -->
       <div class="stop" data-loc="now" data-side="r" style="--p1:42">
         <div class="loc-panel glass">
-          <h2>What I'm looking for</h2>
-          <div class="status-chips">
-            <span class="chip live">Actively seeking</span>
-            <span class="chip moving">Moving to NYC Sept 2026</span>
-          </div>
-          <p class="body">Most recently a contract at Launchpoint, half product engineering and half sales. I shipped features into their live Next.js app, set up the CRM, and built the outbound system that books their meetings, most of it with LLM agents in the loop.</p>
+          <h2>Forward Deployed Manufacturing Engineer, Dirac</h2>
+          <p class="body">Dirac builds AI-driven production planning software for manufacturers. I work on-site with customers, deploying the platform and getting it running on their factory floor.</p>
           <ul class="points">
-            <li>GTM and solutions engineering, technical sales</li>
-            <li>AI tooling and automation systems</li>
-            <li>Quant and trading technology, backtesting through execution</li>
-            <li>Propulsion, fluid systems, and systems engineering</li>
+            <li>Model-based work instructions generated straight from CAD, replacing static documents</li>
+            <li>On-site with manufacturers in aerospace, defense, and industrial equipment</li>
           </ul>
           <a class="deep-link" href="#/now">Read more <span>→</span></a>
         </div>
@@ -1342,18 +1334,14 @@ const PLANETS = {
    with trading handing off to the contact section on the main page. */
 const DEEP = {
   "now": {
-    hue: 42, title: "What I'm looking for",
+    hue: 42, title: "Forward Deployed Manufacturing Engineer",
     next: { href: "#/blue-origin", label: "Blue Origin" },
     body: `
-      <h2>Roles I'm targeting</h2>
-      <ul>
-        <li><strong>GTM engineering, solutions engineering, and technical sales</strong>: I can go as deep as a customer's engineers, and the sales half of my Launchpoint contract showed me I genuinely enjoy the work.</li>
-        <li><strong>AI tooling and systems development</strong>, for teams that want someone who builds the automation rather than just using it.</li>
-        <li><strong>Quant and trading technology</strong>: research tooling, backtesting infrastructure, and execution software.</li>
-        <li><strong>Propulsion, fluid systems, mechanical, and systems engineering</strong>, where my flight-hardware ownership applies directly.</li>
-      </ul>
+      <p>Dirac builds AI-driven production planning software for manufacturers. Instead of static work instructions and paper documents, the platform generates process plans and work instructions straight from CAD and PLM data, and keeps them updated as designs change.</p>
+      <h2>What I do</h2>
+      <p>I work as a forward deployed engineer, on-site with customers to deploy the platform and get it running on their factory floor. That means working directly with manufacturing and engineering teams and adapting the software to how their production actually works.</p>
       <h2>My path</h2>
-      <p>Physics degree. Responsible Engineer on flight-critical cryogenic hardware at Blue Origin. Eighteen months building Python and LLM systems on my own. Most recently, product engineering and sales at an early-stage startup. Each jump came faster than the last because the fundamentals transfer, and I ramp up new domains on my own.</p>
+      <p>Physics degree. Responsible Engineer on flight-critical cryogenic hardware at Blue Origin. Eighteen months building Python and LLM systems on my own. Product engineering and sales at an early-stage startup. Now a forward deployed manufacturing engineer at Dirac. Each jump came faster than the last because the fundamentals transfer, and I ramp up new domains on my own.</p>
       <p>I use LLM agents and custom automation in everything: analysis tooling, design iteration, building this site. Teams taking AI seriously get someone who already works that way. Teams that aren't get a preview.</p>
       <h2>Working style</h2>
       <ul>
@@ -1361,8 +1349,6 @@ const DEEP = {
         <li>Bias toward end-to-end ownership, from concept through delivery.</li>
         <li>Collaborative by default. Comfortable communicating with engineers, vendors, and customers alike.</li>
       </ul>
-      <h2>Logistics</h2>
-      <p>Moving to NYC, ready to start September 2026.</p>
     `
   },
   "blue-origin": {
@@ -1453,15 +1439,15 @@ const DEEP = {
       </ul>
       <h2>Public repos</h2>
       <div class="repo-list">
-        <a href="https://github.com/leif-hellgren1/trade-tracker" target="_blank" rel="noopener"><span class="rname">trade-tracker</span><div class="rdesc">Desktop app for logging trades on a calendar and tracking stats, with Google Sheets sync.</div></a>
-        <a href="https://github.com/leif-hellgren1/tradingview-scripts" target="_blank" rel="noopener"><span class="rname">tradingview-scripts</span><div class="rdesc">Pine Script indicators for intraday futures trading.</div></a>
-        <a href="https://github.com/leif-hellgren1/industry-performance" target="_blank" rel="noopener"><span class="rname">industry-performance</span><div class="rdesc">Ranks industries and a watchlist by price performance against SPY.</div></a>
-        <a href="https://github.com/leif-hellgren1/arc-alert-bot" target="_blank" rel="noopener"><span class="rname">arc-alert-bot</span><div class="rdesc">Routes TradingView alerts to Discord, sorted by signal strength.</div></a>
-        <a href="https://github.com/leif-hellgren1/chartsnap" target="_blank" rel="noopener"><span class="rname">chartsnap</span><div class="rdesc">One keypress to screenshot several TradingView charts into one combined image.</div></a>
+        <a href="https://github.com/lhellgren/trade-tracker" target="_blank" rel="noopener"><span class="rname">trade-tracker</span><div class="rdesc">Desktop app for logging trades on a calendar and tracking stats, with Google Sheets sync.</div></a>
+        <a href="https://github.com/lhellgren/tradingview-scripts" target="_blank" rel="noopener"><span class="rname">tradingview-scripts</span><div class="rdesc">Pine Script indicators for intraday futures trading.</div></a>
+        <a href="https://github.com/lhellgren/industry-performance" target="_blank" rel="noopener"><span class="rname">industry-performance</span><div class="rdesc">Ranks industries and a watchlist by price performance against SPY.</div></a>
+        <a href="https://github.com/lhellgren/arc-alert-bot" target="_blank" rel="noopener"><span class="rname">arc-alert-bot</span><div class="rdesc">Routes TradingView alerts to Discord, sorted by signal strength.</div></a>
+        <a href="https://github.com/lhellgren/chartsnap" target="_blank" rel="noopener"><span class="rname">chartsnap</span><div class="rdesc">One keypress to screenshot several TradingView charts into one combined image.</div></a>
       </div>
       <h2>Beyond markets</h2>
       <div class="repo-list">
-        <a href="https://github.com/leif-hellgren1/subscriptio" target="_blank" rel="noopener"><span class="rname">subscriptio</span><div class="rdesc">Tracks subscriptions and negotiates retention discounts automatically, without ever cancelling.</div></a>
+        <a href="https://github.com/lhellgren/subscriptio" target="_blank" rel="noopener"><span class="rname">subscriptio</span><div class="rdesc">Tracks subscriptions and negotiates retention discounts automatically, without ever cancelling.</div></a>
       </div>
     `
   }
