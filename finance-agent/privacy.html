@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Finance Agent · Privacy policy</title>
+<meta name="description" content="Finance Agent collects no data. Your financial data stays on your own Mac and iPhone." />
+<meta name="theme-color" content="#0a0b0f" />
+<link rel="canonical" href="https://lhellgren.github.io/finance-agent/privacy.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500&family=IBM+Plex+Mono:wght@400&family=Cabin:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="amb"></div>
+<main>
+  <a class="name" href="/">Leif Hellgren</a>
+  <h1>Privacy policy</h1>
+  <p class="muted">Finance Agent for iPhone. Effective September 26, 2026.</p>
+
+  <h2>The short version</h2>
+  <p>The developer collects nothing. There's no account with us, no analytics, no advertising, no
+  tracking and no third-party code in the app. The app talks only to the server you point it at,
+  which is your own Mac.</p>
+
+  <h2>What the app handles, and where it stays</h2>
+  <ul>
+    <li><b>Your financial data</b> (the transactions, budgets, subscriptions and account names your server holds) comes
+      from your server over an encrypted HTTPS connection. It isn't sent anywhere else.</li>
+    <li><b>A copy of the last numbers</b> is cached on your iPhone so the app opens instantly and works
+      while your Mac is asleep. It's stored in the app's private cache with iOS Data Protection
+      (unreadable while the phone is locked) and isn't included in backups.</li>
+    <li><b>A device key</b> that lets your iPhone talk to your server is kept in the iPhone's Keychain,
+      on this device only. Your password is used once to get it and is never stored.</li>
+    <li><b>Settings</b> (your server's address, the time scale you picked, whether Face ID lock is on)
+      are kept in the app's preferences.</li>
+    <li><b>Face ID</b> is handled entirely by iOS. The app only learns whether unlocking succeeded.</li>
+  </ul>
+  <p>Disconnecting in the app's Settings, or deleting the app, removes the cache, the device key and
+  the settings. Disconnecting also revokes the key on your server.</p>
+
+  <h2>Your server</h2>
+  <p>The Finance Agent server runs on your own computer, under your control. It connects to your banks
+  through Plaid with read-only access, and if you turn on the chat feature, it sends your questions and
+  a summary of your numbers to Anthropic's Claude API using your own API key. Those connections are
+  between you and those companies, under their privacy policies:
+  <a href="https://plaid.com/legal/#end-user-privacy-policy">Plaid</a> and
+  <a href="https://www.anthropic.com/legal/privacy">Anthropic</a>. The developer has no access to your
+  server or anything on it.</p>
+
+  <h2>Children</h2>
+  <p>The app isn't directed at children and doesn't knowingly handle children's data.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the new version will be posted here with a new effective date.</p>
+
+  <h2>Contact</h2>
+  <p>Leif Hellgren, <a href="mailto:leif@exelor.com?subject=Finance%20Agent%20privacy">leif@exelor.com</a></p>
+
+  <nav class="links">
+    <a href="./">Support</a>
+    <a href="/">lhellgren.github.io</a>
+  </nav>
+</main>
+</body>
+</html>

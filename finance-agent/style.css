@@ -1,0 +1,29 @@
+/* Finance Agent support + privacy pages: the site's palette and type, long-form layout. */
+:root { --bg:#0a0b0f; --ink:#eef1f7; --ink-dim:#9aa3b2; --ink-body:#c4cad6; --line:#1d2130;
+        --accent:#ff8a4c; --accent-soft:#ffb489; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body { min-height:100vh; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif; font-weight:300; line-height:1.65;
+  -webkit-font-smoothing:antialiased; padding:48px 20px 64px; }
+.amb { position:fixed; inset:0; z-index:-1; background:
+  radial-gradient(55% 45% at 78% 12%, rgba(88,120,255,0.10), transparent 70%),
+  radial-gradient(60% 55% at 15% 85%, rgba(150,80,220,0.08), transparent 70%),
+  linear-gradient(180deg,#0a0b0f 0%,#0b0d14 55%,#0a0b0f 100%); }
+main { max-width:680px; margin:0 auto; }
+.name { font-family:"Gill Sans","Gill Sans MT","Cabin",sans-serif; font-weight:500; text-transform:uppercase;
+  letter-spacing:0.22em; font-size:0.85rem; color:var(--ink-dim); text-decoration:none; }
+h1 { font-size:clamp(1.7rem,5vw,2.3rem); font-weight:500; letter-spacing:-0.01em; line-height:1.2; margin:18px 0 10px; }
+h2 { font-size:1.12rem; font-weight:500; margin:34px 0 8px; }
+p, li { color:var(--ink-body); }
+p + p { margin-top:10px; }
+ul, ol { padding-left:1.3em; margin-top:8px; }
+li + li { margin-top:6px; }
+.lede { font-size:1.08rem; color:var(--ink-dim); }
+.muted { color:var(--ink-dim); font-size:0.9rem; }
+a { color:var(--accent-soft); }
+a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+code { font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:0.88em; background:#141722;
+  border:1px solid var(--line); border-radius:5px; padding:1px 5px; color:var(--ink); }
+.card { border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-top:22px; background:rgba(20,23,34,0.55); }
+nav.links { display:flex; gap:18px; flex-wrap:wrap; margin-top:40px; font-size:0.93rem; }
