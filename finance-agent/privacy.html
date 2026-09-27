@@ -21,24 +21,41 @@
 
   <h2>The short version</h2>
   <p>The developer collects nothing. There's no account with us, no analytics, no advertising, no
-  tracking and no third-party code in the app. The app talks only to the server you point it at,
-  which is your own Mac.</p>
+  tracking and no third-party code in the app. Your numbers come from your own Mac, either through
+  an encrypted relay that can't read them or directly over Tailscale.</p>
 
   <h2>What the app handles, and where it stays</h2>
   <ul>
     <li><b>Your financial data</b> (the transactions, budgets, subscriptions and account names your server holds) comes
-      from your server over an encrypted HTTPS connection. It isn't sent anywhere else.</li>
+      from your own Mac, over HTTPS, either through the relay described below or directly. It isn't sent
+      anywhere else.</li>
     <li><b>A copy of the last numbers</b> is cached on your iPhone so the app opens instantly and works
       while your Mac is asleep. It's stored in the app's private cache with iOS Data Protection
       (unreadable while the phone is locked) and isn't included in backups.</li>
-    <li><b>A device key</b> that lets your iPhone talk to your server is kept in the iPhone's Keychain,
-      on this device only. Your password is used once to get it and is never stored.</li>
+    <li><b>A device key</b> that lets your iPhone talk to your Mac, and the relay's encryption key if you
+      paired through the relay, are kept in the iPhone's Keychain, on this device only. If you connect
+      directly, your password is used once to get the device key and is never stored.</li>
     <li><b>Settings</b> (your server's address, the time scale you picked, whether Face ID lock is on,
       whether you allowed Chat) are kept in the app's preferences.</li>
     <li><b>Face ID</b> is handled entirely by iOS. The app only learns whether unlocking succeeded.</li>
   </ul>
-  <p>Disconnecting in the app's Settings, or deleting the app, removes the cache, the device key and
-  the settings. Disconnecting also revokes the key on your server.</p>
+  <p>Disconnecting or unpairing in the app's Settings, or deleting the app, removes the cache, the keys
+  and the settings. Disconnecting also revokes the device key on your Mac; unpairing removes your
+  iPhone's access from the relay.</p>
+
+  <h2>The relay</h2>
+  <p>If you pair your iPhone with your Mac by scanning the code your Mac shows, the two meet at a
+  small relay the developer runs on Cloudflare (waterline-relay). Your Mac seals a copy of your
+  numbers with AES-256 encryption under a key that exists only on your Mac and your iPhone, and
+  leaves it there; your iPhone fetches and opens it. Requests from your iPhone (filing a transaction,
+  a sync, a Chat question) and your Mac's answers travel the same way, sealed.</p>
+  <p>The relay can't read any of it: it stores only the sealed data, which it can't open, plus the
+  times it was uploaded, when your Mac last checked in, and scrambled (hashed) versions of the two
+  devices' access tokens. It keeps one copy of your numbers at a time, replaced on every upload, and
+  requests for at most a week. Unpairing in the app's Settings removes your iPhone's access; unpairing
+  on your Mac erases everything the relay holds for you. Cloudflare's own handling of the requests it
+  carries is covered by <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's privacy
+  policy</a>.</p>
 
   <h2>Chat and third-party AI</h2>
   <p>Chat answers with Claude, Anthropic's AI model. Nothing is sent until you allow it: the first time
@@ -50,8 +67,8 @@
 
   <h2>Your server</h2>
   <p>The server (Finance Agent) runs on your own computer, under your control. It connects to your banks
-  through Plaid with read-only access, and, when you use Chat, to Anthropic's Claude API with your own
-  API key as described above. Those connections are between you and those companies, under their
+  through Plaid with read-only access, to the relay if you paired through it, and, when you use Chat, to
+  Anthropic's Claude API with your own API key as described above. Those connections are between you and those companies, under their
   privacy policies:
   <a href="https://plaid.com/legal/#end-user-privacy-policy">Plaid</a> and
   <a href="https://www.anthropic.com/legal/privacy">Anthropic</a>. The developer has no access to your

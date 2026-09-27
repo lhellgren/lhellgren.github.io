@@ -27,22 +27,28 @@
   talks only to the server address you give it.</p>
   <p>Without a server, tap <b>Explore with demo data</b> to try every screen with an invented ledger.</p>
 
-  <h2>Connecting your iPhone</h2>
+  <h2>Pairing your iPhone</h2>
   <ol>
-    <li>On the Mac, run the server and turn on Tailscale Serve: <code>tailscale serve --bg 5151</code>.
-      It gives your Mac an https address like <code>https://your-mac.your-tailnet.ts.net</code>.</li>
-    <li>Install Tailscale on your iPhone and sign in to the same account.</li>
-    <li>In the app, enter that address and your dashboard password. The app swaps the password for a
-      device key stored in your iPhone's Keychain and never saves the password itself.</li>
+    <li>On the Mac, with the server running, open Terminal in the Finance Agent folder and run
+      <code>python scripts/relay_setup.py</code>. It shows a QR code.</li>
+    <li>In the app, tap <b>Pair with your Mac</b> and point the camera at the code.</li>
   </ol>
+  <p>From then on your Mac leaves an encrypted copy of your numbers on the relay whenever they change,
+  and your iPhone picks it up, wherever either of them is. Only your Mac and your iPhone hold the key;
+  the relay can't read what it carries (see the <a href="privacy.html">privacy policy</a>).</p>
+  <p><b>Or connect directly over Tailscale:</b> turn on Tailscale Serve on the Mac
+  (<code>tailscale serve --bg 5151</code>), install Tailscale on your iPhone with the same account, and
+  in the app choose <b>Connect over Tailscale instead</b>: your Mac's <code>https://….ts.net</code>
+  address and your dashboard password.</p>
 
   <h2>Common questions</h2>
   <div class="card">
-    <p><b>The app says it can't reach my Mac.</b> The Mac is probably asleep, or Tailscale is off on one
-    side. The app keeps showing the last numbers it loaded, with the time they're from, and refreshes when
-    the Mac is back.</p>
-    <p><b>I lost my phone.</b> On the Mac, open the dashboard, go to Settings &gt; iPhone app and remove it.
-    That phone can't connect again without your password.</p>
+    <p><b>The app says my Mac last checked in hours ago.</b> The Mac is asleep, or its dashboard isn't
+    running. The app keeps showing the last numbers, and updates when the Mac is back. Anything you did
+    meanwhile (filing a transaction, a sync) waits for it.</p>
+    <p><b>I lost my phone.</b> Paired through the relay: run <code>python scripts/relay_setup.py</code>
+    again on the Mac. That makes a new key and cuts off the old phone. Connected over Tailscale: on the
+    Mac, open the dashboard, go to Settings &gt; iPhone app and remove it.</p>
     <p><b>Can the app move money?</b> No. It only reads. Nothing in the app or the server can make a
     payment, transfer or trade.</p>
     <p><b>What does Chat send, and to whom?</b> The first time you ask, the app lists it and asks you.
