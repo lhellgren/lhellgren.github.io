@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Finance Agent · Privacy policy</title>
-<meta name="description" content="Finance Agent collects no data. Your financial data stays on your own Mac and iPhone." />
+<title>Waterline · Privacy policy</title>
+<meta name="description" content="Waterline collects no data. Your financial data stays on your own Mac and iPhone." />
 <meta name="theme-color" content="#0a0b0f" />
 <link rel="canonical" href="https://lhellgren.github.io/finance-agent/privacy.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,7 +17,7 @@
 <main>
   <a class="name" href="/">Leif Hellgren</a>
   <h1>Privacy policy</h1>
-  <p class="muted">Finance Agent for iPhone. Effective September 26, 2026.</p>
+  <p class="muted">Waterline for iPhone. Effective September 27, 2026.</p>
 
   <h2>The short version</h2>
   <p>The developer collects nothing. There's no account with us, no analytics, no advertising, no
@@ -33,18 +33,26 @@
       (unreadable while the phone is locked) and isn't included in backups.</li>
     <li><b>A device key</b> that lets your iPhone talk to your server is kept in the iPhone's Keychain,
       on this device only. Your password is used once to get it and is never stored.</li>
-    <li><b>Settings</b> (your server's address, the time scale you picked, whether Face ID lock is on)
-      are kept in the app's preferences.</li>
+    <li><b>Settings</b> (your server's address, the time scale you picked, whether Face ID lock is on,
+      whether you allowed Chat) are kept in the app's preferences.</li>
     <li><b>Face ID</b> is handled entirely by iOS. The app only learns whether unlocking succeeded.</li>
   </ul>
   <p>Disconnecting in the app's Settings, or deleting the app, removes the cache, the device key and
   the settings. Disconnecting also revokes the key on your server.</p>
 
+  <h2>Chat and third-party AI</h2>
+  <p>Chat answers with Claude, Anthropic's AI model. Nothing is sent until you allow it: the first time
+  you ask, the app lists what will be shared and asks for your permission. After that, each question
+  goes to your Mac, and your Mac sends Anthropic the question together with your net income, this
+  month's budget and spending by category, your active subscriptions and your last 40 transactions
+  (date, account, merchant, amount, category), using the Anthropic API key set up on your Mac. You can
+  turn Chat off at any time in the app's Settings. In demo mode, Chat never leaves your iPhone.</p>
+
   <h2>Your server</h2>
-  <p>The Finance Agent server runs on your own computer, under your control. It connects to your banks
-  through Plaid with read-only access, and if you turn on the chat feature, it sends your questions and
-  a summary of your numbers to Anthropic's Claude API using your own API key. Those connections are
-  between you and those companies, under their privacy policies:
+  <p>The server (Finance Agent) runs on your own computer, under your control. It connects to your banks
+  through Plaid with read-only access, and, when you use Chat, to Anthropic's Claude API with your own
+  API key as described above. Those connections are between you and those companies, under their
+  privacy policies:
   <a href="https://plaid.com/legal/#end-user-privacy-policy">Plaid</a> and
   <a href="https://www.anthropic.com/legal/privacy">Anthropic</a>. The developer has no access to your
   server or anything on it.</p>
@@ -56,7 +64,7 @@
   <p>If this policy changes, the new version will be posted here with a new effective date.</p>
 
   <h2>Contact</h2>
-  <p>Leif Hellgren, <a href="mailto:leif@exelor.com?subject=Finance%20Agent%20privacy">leif@exelor.com</a></p>
+  <p>Leif Hellgren, <a href="mailto:leif@exelor.com?subject=Waterline%20privacy">leif@exelor.com</a></p>
 
   <nav class="links">
     <a href="./">Support</a>
