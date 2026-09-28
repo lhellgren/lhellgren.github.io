@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Waterline · Support</title>
-<meta name="description" content="Support for Waterline, the private iPhone app for the personal-finance server on your own Mac." />
+<meta name="description" content="Support for Waterline: getting started, reconnecting a bank, syncing, history, and deleting your data." />
 <meta name="theme-color" content="#0a0b0f" />
 <link rel="canonical" href="https://lhellgren.github.io/finance-agent/" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,47 +17,45 @@
 <main>
   <a class="name" href="/">Leif Hellgren</a>
   <h1>Waterline</h1>
-  <p class="lede">A private iPhone app for your own personal-finance server. Your budget, spending,
-  subscriptions and accounts, straight from your Mac. No cloud service in between.</p>
+  <p class="lede">Your budget, spending and subscriptions on your iPhone, from your own bank data.
+  Read-only: it never moves money.</p>
 
-  <h2>How it works</h2>
-  <p>The server, Finance Agent, runs on your Mac: it syncs your bank accounts through Plaid
-  (read-only), sorts transactions into categories and builds your budget. Waterline, on your iPhone,
-  shows those numbers, lets you categorize what's left and answers questions about your spending. It
-  talks only to the server address you give it.</p>
-  <p>Without a server, tap <b>Explore with demo data</b> to try every screen with an invented ledger.</p>
-
-  <h2>Pairing your iPhone</h2>
+  <h2>Getting started</h2>
   <ol>
-    <li>On the Mac, with the server running, open Terminal in the Finance Agent folder and run
-      <code>python scripts/relay_setup.py</code>. It shows a QR code.</li>
-    <li>In the app, tap <b>Pair with your Mac</b> and point the camera at the code.</li>
+    <li>Open Waterline and tap <b>Continue with Apple</b>. That makes your account; Waterline asks
+      Apple for no name or email.</li>
+    <li>On the <b>Accounts</b> tab, tap <b>Add a bank</b> and sign in to your bank in Plaid's screens.
+      Add as many as you like.</li>
+    <li>Your transactions come in within a few minutes. Waterline sorts them into categories and builds
+      a budget from what you actually spend. Anything it can't place waits in <b>Review</b>: one tap
+      files it, and the merchant is remembered.</li>
   </ol>
-  <p>From then on your Mac leaves an encrypted copy of your numbers on the relay whenever they change,
-  and your iPhone picks it up, wherever either of them is. Only your Mac and your iPhone hold the key;
-  the relay can't read what it carries (see the <a href="privacy.html">privacy policy</a>).</p>
-  <p><b>Or connect directly over Tailscale:</b> turn on Tailscale Serve on the Mac
-  (<code>tailscale serve --bg 5151</code>), install Tailscale on your iPhone with the same account, and
-  in the app choose <b>Connect over Tailscale instead</b>: your Mac's <code>https://….ts.net</code>
-  address and your dashboard password.</p>
+  <p>Without signing in, tap <b>Explore with demo data</b> to try every screen with an invented ledger.</p>
 
   <h2>Common questions</h2>
   <div class="card">
-    <p><b>The app says my Mac last checked in hours ago.</b> The Mac is asleep, or its dashboard isn't
-    running. The app keeps showing the last numbers, and updates when the Mac is back. Anything you did
-    meanwhile (filing a transaction, a sync) waits for it.</p>
-    <p><b>I lost my phone.</b> Paired through the relay: run <code>python scripts/relay_setup.py</code>
-    again on the Mac. That makes a new key and cuts off the old phone. Connected over Tailscale: on the
-    Mac, open the dashboard, go to Settings &gt; iPhone app and remove it.</p>
-    <p><b>Can the app move money?</b> No. It only reads. Nothing in the app or the server can make a
+    <p><b>A bank shows Reconnect.</b> Your bank wants you to sign in again (banks ask every so often).
+    Tap <b>Reconnect</b> on the Accounts tab or in Settings &gt; Banks and sign in; syncing picks up
+    where it stopped.</p>
+    <p><b>How often does it sync?</b> Every 4 hours by default, even while the app is closed. Change it,
+    or turn it off, in Settings &gt; Syncing. Pull down on any screen, or tap <b>Sync banks now</b>, to
+    sync right away.</p>
+    <p><b>Where are past months?</b> On the Budgets tab, under History: each month by category, budget
+    and week, and each year month by month.</p>
+    <p><b>A subscription is missing.</b> Ones your bank data shows are found by themselves. For one
+    billed somewhere Waterline can't see, tap <b>Add a subscription</b> on the Subscriptions tab.</p>
+    <p><b>I lost my phone.</b> Sign in on your new phone with the same Apple Account, then remove the
+    old one in Settings &gt; Signed-in devices.</p>
+    <p><b>Can the app move money?</b> No. Bank access is read-only; nothing in Waterline can make a
     payment, transfer or trade.</p>
-    <p><b>What does Chat send, and to whom?</b> The first time you ask, the app lists it and asks you.
-    Your question goes to your Mac, which sends it with your budget, subscriptions and recent
-    transactions to Anthropic's Claude, using your own API key. You can turn Chat off in Settings.</p>
+    <p><b>What does Claude see?</b> Nothing until you allow it. Then Chat sends your question with your
+    budget, subscriptions and recent transactions, and new merchants Waterline can't place are sent for
+    a suggested category. Turn it off any time in Settings. See the
+    <a href="privacy.html">privacy policy</a>.</p>
     <p><b>Is it financial advice?</b> No. Waterline shows your own numbers and how they compare with the
     budget you set. It doesn't recommend investments or other financial products.</p>
-    <p><b>Where is my data?</b> On your Mac, and a cached copy on your iPhone. See the
-    <a href="privacy.html">privacy policy</a>.</p>
+    <p><b>How do I delete my data?</b> Settings &gt; Delete account erases everything Waterline holds and
+    disconnects your banks.</p>
   </div>
 
   <h2>Contact</h2>

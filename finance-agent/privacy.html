@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Waterline · Privacy policy</title>
-<meta name="description" content="Waterline collects no data. Your financial data stays on your own Mac and iPhone." />
+<meta name="description" content="What Waterline keeps in your account, who it shares it with (Plaid, and Anthropic only if you allow it), and how to delete it." />
 <meta name="theme-color" content="#0a0b0f" />
 <link rel="canonical" href="https://lhellgren.github.io/finance-agent/privacy.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,62 +17,83 @@
 <main>
   <a class="name" href="/">Leif Hellgren</a>
   <h1>Privacy policy</h1>
-  <p class="muted">Waterline for iPhone. Effective September 27, 2026.</p>
+  <p class="muted">Waterline for iPhone. Effective September 28, 2026.</p>
 
   <h2>The short version</h2>
-  <p>The developer collects nothing. There's no account with us, no analytics, no advertising, no
-  tracking and no third-party code in the app. Your numbers come from your own Mac, either through
-  an encrypted relay that can't read them or directly over Tailscale.</p>
+  <p>Waterline keeps your transactions and budget in your Waterline account so it can sync with your
+  banks while the app is closed. It's read-only: it can't move money. Your data isn't sold, used for
+  advertising or tracked across apps, and there's no analytics in the app. It goes to two other
+  companies only: Plaid, which connects your banks, and Anthropic, only if you allow Claude to answer
+  your questions and suggest categories. You can delete your account and everything in it from the
+  app at any time.</p>
 
-  <h2>What the app handles, and where it stays</h2>
+  <h2>Your account</h2>
+  <p>You sign in with Apple. Waterline asks Apple for no name and no email address. Apple gives the
+  app an ID for your Apple Account; Waterline's server stores only a scrambled (keyed hash) form of
+  it, which is how it finds your account the next time you sign in.</p>
+
+  <h2>What your account holds</h2>
   <ul>
-    <li><b>Your financial data</b> (the transactions, budgets, subscriptions and account names your server holds) comes
-      from your own Mac, over HTTPS, either through the relay described below or directly. It isn't sent
-      anywhere else.</li>
-    <li><b>A copy of the last numbers</b> is cached on your iPhone so the app opens instantly and works
-      while your Mac is asleep. It's stored in the app's private cache with iOS Data Protection
-      (unreadable while the phone is locked) and isn't included in backups.</li>
-    <li><b>A device key</b> that lets your iPhone talk to your Mac, and the relay's encryption key if you
-      paired through the relay, are kept in the iPhone's Keychain, on this device only. If you connect
-      directly, your password is used once to get the device key and is never stored.</li>
-    <li><b>Settings</b> (your server's address, the time scale you picked, whether Face ID lock is on,
-      whether you allowed Chat) are kept in the app's preferences.</li>
+    <li><b>Your transactions</b> from the banks you link: date, merchant, amount, account and category,
+      and whether each is still pending.</li>
+    <li><b>What's worked out from them</b>: budgets, subscriptions, past months, and the categories
+      Waterline learned for each merchant.</li>
+    <li><b>Your settings</b>: take-home pay, savings rate, fixed costs and targets you enter, how often
+      to sync, whether you allowed Claude, and your time zone.</li>
+    <li><b>Your bank links</b>: the account names and institutions, when each last synced, and the
+      access token Plaid issues for each link. Access tokens are encrypted (AES-256) before they're
+      stored.</li>
+    <li><b>Signed-in devices</b>: each device's name and when it was last used. Sign-in tokens are
+      stored only in scrambled (hashed) form.</li>
+  </ul>
+  <p>Your account lives on Cloudflare, where Waterline's server runs, and is used only to show you your
+  own numbers. It isn't shared with anyone else, and only you can sign in to it. Cloudflare's handling
+  of the requests it carries is covered by
+  <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's privacy policy</a>.</p>
+
+  <h2>Your banks and Plaid</h2>
+  <p>Banks are connected through Plaid, with read-only access to transactions. You sign in to your bank
+  in Plaid's own screens; Waterline never sees your bank username or password. Plaid then sends
+  Waterline's server your transactions and account names. Plaid's handling of your data is covered by
+  <a href="https://plaid.com/legal/#end-user-privacy-policy">Plaid's end user privacy policy</a>.
+  Deleting your Waterline account also disconnects every bank link from Plaid.</p>
+
+  <h2>Claude and third-party AI</h2>
+  <p>Waterline can use Claude, Anthropic's AI model, in two ways. Nothing goes to Anthropic until you
+  allow it: the app lists what will be shared and asks first. Once allowed:</p>
+  <ul>
+    <li><b>Chat</b>: each question you ask is sent to Anthropic with your net income, this month's budget
+      and spending by category, your active subscriptions and your last 40 transactions (date, account,
+      merchant, amount, category).</li>
+    <li><b>Categorizing</b>: after each bank sync, the names and average amounts of new merchants
+      Waterline's own rules can't place are sent so Claude can suggest a category.</li>
+  </ul>
+  <p>Every figure is worked out by Waterline before anything is sent; Claude only explains them. Chat
+  questions aren't stored in your account. Anthropic handles what it receives under
+  <a href="https://www.anthropic.com/legal/privacy">Anthropic's privacy policy</a>. You can turn
+  Claude off at any time in the app's Settings; after that nothing is sent, and new merchants wait in
+  Review for you to categorize. In demo mode, nothing leaves your iPhone.</p>
+
+  <h2>Speaking a question</h2>
+  <p>If you ask Chat out loud, iOS turns your speech into text on your iPhone. No audio leaves the
+  phone; the text is then sent like a typed question, only after you tap Send.</p>
+
+  <h2>On your iPhone</h2>
+  <ul>
+    <li><b>A copy of your latest numbers</b> is cached so the app opens instantly and works offline. It's
+      kept in the app's private cache with iOS Data Protection (unreadable while the phone is locked)
+      and isn't included in backups.</li>
+    <li><b>Your sign-in token</b> is kept in the iPhone's Keychain, on this device only.</li>
+    <li><b>Settings</b> such as the time scale you picked and whether Face ID lock is on are kept in the
+      app's preferences.</li>
     <li><b>Face ID</b> is handled entirely by iOS. The app only learns whether unlocking succeeded.</li>
   </ul>
-  <p>Disconnecting or unpairing in the app's Settings, or deleting the app, removes the cache, the keys
-  and the settings. Disconnecting also revokes the device key on your Mac; unpairing removes your
-  iPhone's access from the relay.</p>
 
-  <h2>The relay</h2>
-  <p>If you pair your iPhone with your Mac by scanning the code your Mac shows, the two meet at a
-  small relay the developer runs on Cloudflare (waterline-relay). Your Mac seals a copy of your
-  numbers with AES-256 encryption under a key that exists only on your Mac and your iPhone, and
-  leaves it there; your iPhone fetches and opens it. Requests from your iPhone (filing a transaction,
-  a sync, a Chat question) and your Mac's answers travel the same way, sealed.</p>
-  <p>The relay can't read any of it: it stores only the sealed data, which it can't open, plus the
-  times it was uploaded, when your Mac last checked in, and scrambled (hashed) versions of the two
-  devices' access tokens. It keeps one copy of your numbers at a time, replaced on every upload, and
-  requests for at most a week. Unpairing in the app's Settings removes your iPhone's access; unpairing
-  on your Mac erases everything the relay holds for you. Cloudflare's own handling of the requests it
-  carries is covered by <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's privacy
-  policy</a>.</p>
-
-  <h2>Chat and third-party AI</h2>
-  <p>Chat answers with Claude, Anthropic's AI model. Nothing is sent until you allow it: the first time
-  you ask, the app lists what will be shared and asks for your permission. After that, each question
-  goes to your Mac, and your Mac sends Anthropic the question together with your net income, this
-  month's budget and spending by category, your active subscriptions and your last 40 transactions
-  (date, account, merchant, amount, category), using the Anthropic API key set up on your Mac. You can
-  turn Chat off at any time in the app's Settings. In demo mode, Chat never leaves your iPhone.</p>
-
-  <h2>Your server</h2>
-  <p>The server (Finance Agent) runs on your own computer, under your control. It connects to your banks
-  through Plaid with read-only access, to the relay if you paired through it, and, when you use Chat, to
-  Anthropic's Claude API with your own API key as described above. Those connections are between you and those companies, under their
-  privacy policies:
-  <a href="https://plaid.com/legal/#end-user-privacy-policy">Plaid</a> and
-  <a href="https://www.anthropic.com/legal/privacy">Anthropic</a>. The developer has no access to your
-  server or anything on it.</p>
+  <h2>Keeping and deleting your data</h2>
+  <p>Your account keeps your data until you delete it. Settings &gt; Delete account erases your
+  transactions, budgets, settings and bank links from Waterline's server and disconnects your banks from
+  Plaid. Signing out removes the cached numbers, token and settings from that iPhone and leaves your
+  account as it is; removing a device in Settings signs that device out.</p>
 
   <h2>Children</h2>
   <p>The app isn't directed at children and doesn't knowingly handle children's data.</p>
